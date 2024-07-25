@@ -1,5 +1,7 @@
+/* Importing font styles */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
+/* Universal Styles */
 * {
   box-sizing: border-box;
 }
@@ -7,22 +9,18 @@
 html {
   font-family: 'Roboto', sans-serif;
   line-height: 1.5;
-
   color: #ebe7ef;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   height: 100%;
-  /* min-height: 100rem; */
 }
 
 body {
   margin: 0;
   padding: 2rem;
-  /* background: linear-gradient(180deg, #22182f 0%, #2c2437 100%); */
   background-color: #1d0433;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 400'%3E%3Cdefs%3E%3CradialGradient id='a' cx='396' cy='281' r='514' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%237616DD'/%3E%3Cstop offset='1' stop-color='%231D0433'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='400' y1='148' x2='400' y2='333'%3E%3Cstop offset='0' stop-color='%2318E0FF' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%2318E0FF' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='400'/%3E%3Cg fill-opacity='0.4'%3E%3Ccircle fill='url(%23b)' cx='267.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='532.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='400' cy='30' r='300'/%3E%3C/g%3E%3C/svg%3E");
   background-attachment: fixed;
@@ -30,6 +28,7 @@ body {
   background-position: center;
 }
 
+/* Header Styles */
 header {
   margin: 2rem 0;
   text-align: center;
@@ -53,6 +52,7 @@ header h1 {
   -webkit-text-fill-color: transparent;
 }
 
+/* Other Styles */
 #last-try {
   max-width: 40rem;
   margin: 2rem auto;
@@ -84,7 +84,6 @@ header h1 {
   padding: 2rem;
   background: linear-gradient(180deg, #3e2a60 0%, #321061 100%);
   border-radius: 8px;
-  /* box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.6); */
   box-shadow: 1px 1px 8px 4px rgba(12, 5, 32, 0.6);
   text-align: center;
 }
@@ -158,7 +157,6 @@ header h1 {
   padding: 1rem 2rem;
   border: none;
   border-radius: 24px;
-  /* background: linear-gradient(180deg, #81f1fb 0%, #73d2f8 100%); */
   background: #6cb7f5;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -166,26 +164,21 @@ header h1 {
 
 .answer button:hover,
 .answer button:focus {
-  /* background: linear-gradient(180deg, #bf48f6 0%, #9b50f2 100%); */
   background: #9d5af5;
   color: white;
-  /* box-shadow: 0 0 4px 2px rgba(255, 200, 60, 0.8); */
 }
 
 .answer button.selected {
-  /* background: linear-gradient(180deg, #fbda81 0%, #f8b173 100%); */
   background: #f5a76c;
   color: #2c203d;
 }
 
 .answer button.correct {
-  /* background: linear-gradient(180deg, #a1fa61 0%, #52d482 100%); */
-  background: #5af59d;
+  background: #5af59d; /* Light green */
   color: #2c203d;
 }
 
 .answer button.wrong {
-  /* background: linear-gradient(180deg, #f96fb1 0%, #f52b8c 100%); */
   background: #f55a98;
   color: #2c203d;
 }
@@ -324,6 +317,12 @@ header h1 {
   letter-spacing: 0.1rem;
 }
 
+.answer button.correct {
+  background: #5af59d; /* Green background for correct answers */
+  color: #2c203d;
+}
+
+
 @keyframes slide-in-from-bottom {
   0% {
     opacity: 0;
@@ -333,4 +332,35 @@ header h1 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes progress-bar-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+#question progress {
+  width: 50%;
+  height: 0.5rem;
+  border-radius: 24px;
+  background: #9e5ef8;
+  margin: 0;
+  animation: progress-bar-fill 0.5s ease-out;
+}
+
+#question progress.answered {
+  background: #f8e59c;
+  animation: none; /* Stop animation once answered */
+}
+
+#question progress.answered::-webkit-progress-bar {
+  background: #6a558a;
+}
+
+#question progress.answered::-webkit-progress-value {
+  background: #f8e59c;
 }
