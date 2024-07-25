@@ -1,45 +1,37 @@
+import { useState, useCallback } from "react";
 import QuestionTimer from "./QuestionTimer";
 import Answers from "./Answers";
-import { useState, useEffect } from "react";
 import QUESTIONS from '../questions';
 
-export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
+export default function Question({ index, onSelectAnswer, onSkipAnswer, onNextQuestion }) {
     const [answer, setAnswer] = useState({
         selectedAnswer: '',
         isCorrect: null
     });
+    const [showNextButton, setShowNextButton] = useState(false); // State to control the visibility of the Next Question button
 
-    // Set default timer to 10 seconds
-    const [timer, setTimer] = useState(10000);
-
-    useEffect(() => {
-        // Update timer based on answer state
-        if (answer.selectedAnswer) {
-            setTimer(10000); // Extend timer to 20 seconds after answering
-        } else {
-            setTimer(60000); // Default timer duration
-        }
-    }, [answer.selectedAnswer]);
-
-    function handleSelectAnswer(answer) {
+    const handleSelectAnswer = useCallback((selectedAnswer) => {
         setAnswer({
-            selectedAnswer: answer,
-            isCorrect: null
+            selectedAnswer,
+            isCorrect: QUESTIONS[index].answers[0] === selectedAnswer
         });
 
-        setTimeout(() => {
-            setAnswer({
-                selectedAnswer: answer,
-                isCorrect: QUESTIONS[index].answers[0] === answer
-            });
+        setShowNextButton(true); // Show the Next Question button
 
-            // Wait 10 seconds before switching to the next question
-            setTimeout(() => {
-                onSelectAnswer(answer);
-            }, 10000); // 10 seconds delay
+        // Optionally, you can use a timeout if you want to delay the visibility
+        // setTimeout(() => setShowNextButton(true), 1000);
 
-        }, 1000); // 1 second delay
-    }
+        // Optionally, move to the next question after a delay if you want
+        // setTimeout(() => {
+        //     onSelectAnswer(selectedAnswer);
+        //     onNextQuestion();
+        // }, 1000);
+    }, [index, onSelectAnswer, onNextQuestion]);
+
+    const handleNextQuestion = () => {
+        onSelectAnswer(answer.selectedAnswer);
+        onNextQuestion();
+    };
 
     let answerState = '';
 
@@ -51,12 +43,13 @@ export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
 
     return (
         <div id="question">
-            <QuestionTimer
-                key={timer}
-                timeout={timer}
-                onTimeout={answer.selectedAnswer === '' ? onSkipAnswer : null}
-                mode={answerState}
-            />
+            {answer.selectedAnswer === '' && (
+                <QuestionTimer
+                    timeout={60000}
+                    onTimeout={answer.selectedAnswer === '' ? onSkipAnswer : null}
+                    mode={answerState}
+                />
+            )}
             <h2>{QUESTIONS[index].text}</h2>
             <Answers
                 answers={QUESTIONS[index].answers}
@@ -64,6 +57,9 @@ export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
                 answerState={answerState}
                 onSelect={handleSelectAnswer}
             />
+            {showNextButton && (
+                <button onClick={handleNextQuestion}>Next Question</button>
+            )}
         </div>
     );
 }

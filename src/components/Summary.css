@@ -1,0 +1,66 @@
+/* Summary.css */
+#summary {
+    width: 80%; /* Increase width of the summary page */
+    margin: auto;
+    padding: 20px;
+}
+
+.summary-img {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.summary-title {
+    text-align: center;
+}
+
+.team-stats {
+    /* display: flex; */
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.team-stat-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%; /* Adjust width as needed */
+    margin-bottom: 20px;
+}
+
+.team-name {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    color: #343a40;
+}
+
+.stat-item {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.stat-value {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.user-answers {
+    margin-top: 20px;
+}
+
+.user-answer {
+    font-size: 1.1em;
+}
+
+.user-answer.skipped {
+    color: #6c757d;
+}
+
+.user-answer.correct {
+    color: #28a745;
+}
+
+.user-answer.wrong {
+    color: #dc3545;
+}

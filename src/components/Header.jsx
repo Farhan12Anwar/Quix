@@ -4,7 +4,7 @@ export default function Header() {
     return (
         <header>
             <img src={logoImg} alt='Quiz Logo' />
-            <h1>Quiz Application</h1>
+            <h1>Welcome to Kaun Banega Bikshapathi</h1>
         </header>
-    )
+    );
 }

@@ -1,9 +1,9 @@
 import { useRef } from "react";
 
 export default function Answers({ answers, selectedAnswer, answerState, onSelect }) {
-    const shuffledAnswers = useRef();
+    const shuffledAnswers = useRef([]);
 
-    if (!shuffledAnswers.current) {
+    if (shuffledAnswers.current.length === 0) {
         shuffledAnswers.current = [...answers];
         shuffledAnswers.current.sort(() => Math.random() - 0.5);
     }

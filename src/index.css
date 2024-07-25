@@ -201,8 +201,9 @@ header h1 {
   color: #c7bfd6;
 }
 
+/* Summary.css */
 #summary {
-  max-width: 40rem;
+  max-width: 80%; /* Increase the width of the results page */
   margin: 2rem auto;
   padding: 2rem;
   background: linear-gradient(180deg, #a17eda 0%, #895fc4 100%);
@@ -285,82 +286,49 @@ header h1 {
   font-weight: normal;
 }
 
-#summary-stats {
-  display: flex;
-  gap: 3rem;
-  width: 60%;
-  margin: 2rem auto;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid #594276;
+/* Add styles for the Team Statistics Section */
+.team-stats {
+  margin-top: 2rem;
 }
 
-#summary-stats p {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-}
-
-#summary-stats .number {
+.team-stats-title {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 3rem;
-  color: #594276;
-}
-
-#summary-stats .text {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5rem;
+  color: #3a2353;
+  margin-bottom: 1rem;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  color: #30273a;
-  margin-top: -0.7rem;
-  margin-left: 0.2rem;
-  letter-spacing: 0.1rem;
 }
 
-.answer button.correct {
-  background: #5af59d; /* Green background for correct answers */
-  color: #2c203d;
+.team-stats-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping for responsive design */
+  gap: 1rem; /* Adjust spacing between items */
+  justify-content: center; /* Center-align the items */
 }
 
-
-@keyframes slide-in-from-bottom {
-  0% {
-    opacity: 0;
-    transform: translateY(10%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.team-stat-item {
+  background: #ffffff;
+  border: 1px solid #d6d6d6;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex: 1 1 200px; /* Ensure items are responsive and flexible */
 }
 
-@keyframes progress-bar-fill {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
+.team-name {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.2rem;
+  color: #3a2353;
+  margin-bottom: 0.5rem;
 }
 
-#question progress {
-  width: 50%;
-  height: 0.5rem;
-  border-radius: 24px;
-  background: #9e5ef8;
-  margin: 0;
-  animation: progress-bar-fill 0.5s ease-out;
+.stat-item {
+  font-size: 1rem;
+  margin: 0.5rem 0;
 }
 
-#question progress.answered {
-  background: #f8e59c;
-  animation: none; /* Stop animation once answered */
-}
-
-#question progress.answered::-webkit-progress-bar {
-  background: #6a558a;
-}
-
-#question progress.answered::-webkit-progress-value {
-  background: #f8e59c;
+.stat-value {
+  font-weight: bold;
+  color: #594276;
 }
