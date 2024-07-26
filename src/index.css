@@ -638,3 +638,248 @@ li {
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
 }
+/* Summary.css */
+
+.next-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+  background-color: #0056b3;
+}
+/* App.css */
+
+.quiz {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.answers button {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.answers button:hover {
+  background-color: #0056b3;
+}
+
+.next-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+  background-color: #218838;
+}
+/* App.css */
+
+.question-header {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 5px;
+  background-color: #007bff;
+  margin: 10px 0;
+}
+
+.timer {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.next-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+  background-color: #218838;
+}
+
+.user-answer.correct {
+  color: green;
+}
+
+.user-answer.wrong {
+  color: red;
+}
+
+.user-answer.skipped {
+  color: gray;
+}
+
+.summary-image {
+  max-width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.summary-title {
+  text-align: center;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.team-card {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.team-stats-summary {
+  margin: 20px 0;
+}
+
+.team-stats-card {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+/* App.css */
+
+.question-header {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 5px;
+  background-color: #007bff;
+  margin: 10px 0;
+}
+
+.timer {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.next-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+  background-color: #218838;
+}
+
+.user-answer.correct {
+  color: green;
+}
+
+.user-answer.wrong {
+  color: red;
+}
+
+.user-answer.skipped {
+  color: gray;
+}
+
+.summary-image {
+  max-width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.summary-title {
+  text-align: center;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.team-card {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.team-stats-summary {
+  margin: 20px 0;
+}
+
+.team-stats-card {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.timer-container {
+  position: relative;
+  width: 100%; /* Adjust width as needed */
+  margin-bottom: 10px; /* Space between timer and progress bar */
+}
+
+.timer {
+  font-size: 1.5rem; /* Adjust size as needed */
+  position: absolute;
+  top: -30px; /* Position the timer above the progress bar */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.progress-bar {
+  position: relative;
+  height: 20px; /* Adjust height as needed */
+  background-color: #f3f3f3; /* Background color of progress bar */
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #4caf50; /* Fill color */
+  width: 0%; /* This will be updated dynamically */
+}
+

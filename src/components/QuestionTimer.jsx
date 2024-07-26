@@ -1,62 +1,35 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 export default function QuestionTimer({ timeout, onTimeout, mode }) {
-    const [remainingTime, setRemainingTime] = useState(timeout);
-    const [animationStarted, setAnimationStarted] = useState(false);
-    const [extraTime, setExtraTime] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(timeout / 1000); // Convert to seconds
+    const [progress, setProgress] = useState(100);
 
     useEffect(() => {
-        if (mode === 'answered' && !animationStarted) {
-            setAnimationStarted(true);
-            // Reset progress bar animation
-            const progressBar = document.querySelector('#question progress');
-            progressBar.style.width = '0%'; // Reset width
-            progressBar.offsetWidth; // Trigger reflow
-            progressBar.style.animation = 'progress-bar-fill 0.5s ease-out'; // Start animation
+        setTimeLeft(timeout / 1000);
+        setProgress(100);
 
-            // Increase the remaining time after answering
-            setExtraTime(10000); // Add 10 seconds
-        }
-    }, [mode, animationStarted]);
-
-    useEffect(() => {
-        if (mode === 'answered') {
-            // Stop animation when the question is answered
-            const progressBar = document.querySelector('#question progress');
-            progressBar.style.animation = 'none';
-        }
-    }, [mode]);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            if (extraTime > 0) {
-                setRemainingTime((prevRemainingTime) => prevRemainingTime + extraTime);
-                setExtraTime(0);
-            }
-            onTimeout();
-        }, timeout + extraTime);
-
-        return () => {
-            clearTimeout(timer);
-        };
-    }, [timeout, extraTime, onTimeout]);
-
-    useEffect(() => {
         const interval = setInterval(() => {
-            setRemainingTime((prevRemainingTime) => prevRemainingTime - 100);
-        }, 100);
+            setTimeLeft(prev => prev - 1);
+            setProgress((prevTimeLeft / timeout) * 100);
+        }, 1000);
+
+        const timer = setTimeout(() => {
+            clearInterval(interval);
+            onTimeout && onTimeout();
+        }, timeout);
 
         return () => {
             clearInterval(interval);
+            clearTimeout(timer);
         };
-    }, []);
+    }, [timeout, onTimeout]);
 
     return (
-        <progress
-            id="question-time"
-            max={timeout + extraTime}
-            value={remainingTime}
-            className={mode}
-        />
+        <div className="timer-container">
+            <div className="timer">{timeLeft}s</div>
+            <div className="progress-bar">
+                <div className="progress-bar-fill" style={{ width: `${progress}%` }}></div>
+            </div>
+        </div>
     );
 }
