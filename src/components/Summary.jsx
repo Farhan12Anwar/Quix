@@ -1,64 +1,72 @@
 import quizCompleteImg from '../assets/quiz-complete.png';
 import QUESTIONS from '../questions';
-import Answers from './Answers';
 
-export default function Summary({ userAnswers }) {
+export default function Summary({ userAnswers, teamScores }) {
+    // Calculate statistics for each team
+    const teamStats = teamScores.map((_, index) => {
+        const teamNumber = index + 1; // Teams are 1-based
 
-const skippedAnswers = userAnswers.filter(answer => answer === null);
-const correctAnswers = userAnswers.filter(
-    (answer, index) => answer === QUESTIONS[index].answers[0]
-    );
+        // Filter answers for the current team
+        const teamAnswers = userAnswers.map((answer, i) => {
+            return QUESTIONS[i].team === teamNumber ? answer : null;
+        }).filter(answer => answer !== null);
 
-    const skippedAnswersShare = Math.round(
-        (skippedAnswers.length / userAnswers.length) * 100
-    );
+        const teamSkipped = teamAnswers.filter(answer => answer === null).length;
+        const teamCorrect = teamAnswers.filter(
+            (answer, i) => answer === QUESTIONS[i].answers[0]
+        ).length;
+        const teamWrong = teamAnswers.length - teamSkipped - teamCorrect;
 
-    const correctAnswersShare = Math.round(
-        (correctAnswers.length / userAnswers.length) * 100
-    );
+        return {
+            skipped: teamSkipped,
+            correct: teamCorrect,
+            wrong: teamWrong
+        };
+    });
 
-    const wrongAnswersShare = 100 - skippedAnswersShare - correctAnswersShare;
-
-    return(
+    return (
         <div id="summary">
-        <img src={quizCompleteImg} alt="Trophy icon"/>
-        <h2>Quiz Completed</h2>
-        <div id='summary-stats'>
-            <p>
-                <span className='number'>{skippedAnswersShare}%</span>
-                <span className='text'>Skipped</span>
-            </p>
-            <p>
-                <span className='number'>{correctAnswersShare}%</span>
-                <span className='text'>Answered Correctly</span>
-            </p>
-            <p>
-                <span className='number'>{wrongAnswersShare}%</span>
-                <span className='text'>Incorrectly Correctly</span>
-            </p>
+            <img src={quizCompleteImg} alt="Trophy icon" />
+            <h2>Quiz Completed</h2>
+            <div className="scoreboard">
+                {teamScores.map((score, index) => (
+                    <div className="team-card" key={index}>
+                        <div className="team-name">Team {index + 1}</div>
+                        <div className="team-score">Score: <span>{score}</span></div>
+                    </div>
+                ))}
+            </div>
+            <div id="team-stats-summary">
+                {teamStats.map((stats, index) => (
+                    <div className="team-stats-card" key={index}>
+                        <h4>Team {index + 1} Statistics</h4>
+                        <p>Skipped: {stats.skipped}</p>
+                        <p>Answered Correctly: {stats.correct}</p>
+                        <p>Answered Incorrectly: {stats.wrong}</p>
+                    </div>
+                ))}
+            </div>
+            <ol>
+                {userAnswers.map((answer, index) => {
+                    let cssClass = 'user-answer';
+
+                    if (answer === null) {
+                        cssClass += ' skipped';
+                    } else if (answer === QUESTIONS[index].answers[0]) {
+                        cssClass += ' correct';
+                    } else {
+                        cssClass += ' wrong';
+                    }
+
+                    return (
+                        <li key={index}>
+                            <h3>{index + 1}</h3>
+                            <p className='question'>{QUESTIONS[index].text}</p>
+                            <p className={cssClass}>{answer ?? 'Skipped'}</p>
+                        </li>
+                    )
+                })}
+            </ol>
         </div>
-        <ol>
-            {userAnswers.map((answer, index) => {
-
-                let cssClass = 'user-answer';
-
-                if(answer === null) {
-                    cssClass += ' Skipped';
-                } else if(answer === QUESTIONS[index].answers[0]) {
-                    cssClass += ' correct';
-                } else {
-                    cssClass += ' wrong';
-                }
-
-                return(
-            <li key={index}>
-                <h3>{index + 1}</h3>
-                <p className='question'>{QUESTIONS[index].text}</p>
-                <p className={cssClass}>{answer ?? 'Skipped'}</p>
-            </li>
-                )
-            })}
-        </ol>
-    </div>
-    )
+    );
 }

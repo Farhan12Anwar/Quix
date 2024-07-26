@@ -364,3 +364,199 @@ header h1 {
 #question progress.answered::-webkit-progress-value {
   background: #f8e59c;
 }
+
+#summary-stats {
+  display: flex;
+  justify-content: space-around; /* Spread items evenly */
+  gap: 1rem;
+  margin: 2rem auto;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #594276;
+}
+
+.team-stats {
+  flex: 1; /* Each team stats block takes equal space */
+  text-align: center;
+}
+
+.team-stats .number {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 3rem;
+  color: #594276;
+}
+
+.team-stats .text {
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #30273a;
+  margin-top: -0.7rem;
+  margin-left: 0.2rem;
+  letter-spacing: 0.1rem;
+}
+/* Add these styles to your index.css file */
+
+/* Styles for current team */
+#quiz h2 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5rem;
+  color: #c1b2dd;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Styles for team scores */
+#team-scores {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+#team-scores p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: #ebe7ef;
+}
+
+/* Styles for team scores summary */
+#team-scores-summary {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#team-scores-summary p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  color: #3a2353;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 20px;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.team-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 30%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+}
+
+.team-name {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.team-score {
+  font-size: 1.2em;
+}
+
+#team1 {
+  border-left: 5px solid #007bff;
+}
+
+#team2 {
+  border-left: 5px solid #28a745;
+}
+
+#team3 {
+  border-left: 5px solid #dc3545;
+}
+
+.highlight {
+  background-color: #e3f2fd;
+  border: 2px solid #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.highlight .team-name, .highlight .team-score {
+  color: #007bff;
+}
+
+#team-stats-summary {
+  margin-top: 20px;
+}
+
+.team-stats {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.team-stats h3 {
+  margin-top: 0;
+}
+#summary {
+  width: 80%; /* Increase width as needed */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.team-card {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 30%;
+}
+
+#team-stats-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.team-stats-card {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 30%;
+}
+
+ol {
+  margin-top: 20px;
+}
+
+.user-answer {
+  margin: 5px 0;
+}
+
+.user-answer.skipped {
+  color: gray;
+}
+
+.user-answer.correct {
+  color: green;
+}
+
+.user-answer.wrong {
+  color: red;
+}

@@ -9,6 +9,8 @@ export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
         isCorrect: null
     });
 
+    
+
     // Set default timer to 10 seconds
     const [timer, setTimer] = useState(10000);
 
