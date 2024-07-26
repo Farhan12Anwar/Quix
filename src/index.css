@@ -505,10 +505,59 @@ body {
 .team-stats h3 {
   margin-top: 0;
 }
+/* Summary.css */
+
 #summary {
-  width: 80%; /* Increase width as needed */
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary-image {
+  display: block;
+  margin: 0 auto 20px;
+  max-width: 100px;
+}
+
+.summary-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.progress-container {
+  margin: 20px 0;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4caf50;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.timer {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.timer h3 {
+  margin-bottom: 10px;
+}
+
+.timer p {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
 }
 
 .scoreboard {
@@ -519,11 +568,22 @@ body {
 
 .team-card {
   text-align: center;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
   width: 30%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.team-name {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.team-score {
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 #team-stats-summary {
@@ -534,29 +594,47 @@ body {
 
 .team-stats-card {
   text-align: center;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
   width: 30%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.team-stats-card h4 {
+  margin-bottom: 15px;
+  font-size: 1.2em;
 }
 
 ol {
   margin-top: 20px;
+  padding-left: 0;
+  list-style-type: none;
 }
 
 .user-answer {
   margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .user-answer.skipped {
-  color: gray;
+  background-color: #e0e0e0;
+  color: #757575;
 }
 
 .user-answer.correct {
-  color: green;
+  background-color: #d4edda;
+  color: #155724;
 }
 
 .user-answer.wrong {
-  color: red;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
 }

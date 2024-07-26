@@ -1,12 +1,12 @@
 import quizCompleteImg from '../assets/quiz-complete.png';
 import QUESTIONS from '../questions';
+// import './Summary.css'; // Import the CSS file
 
 export default function Summary({ userAnswers, teamScores }) {
     // Calculate statistics for each team
     const teamStats = teamScores.map((_, index) => {
-        const teamNumber = index + 1; // Teams are 1-based
+        const teamNumber = index + 1;
 
-        // Filter answers for the current team
         const teamAnswers = userAnswers.map((answer, i) => {
             return QUESTIONS[i].team === teamNumber ? answer : null;
         }).filter(answer => answer !== null);
@@ -26,8 +26,8 @@ export default function Summary({ userAnswers, teamScores }) {
 
     return (
         <div id="summary">
-            <img src={quizCompleteImg} alt="Trophy icon" />
-            <h2>Quiz Completed</h2>
+            <img src={quizCompleteImg} alt="Trophy icon" className="summary-image" />
+            <h2 className="summary-title">Quiz Completed</h2>
             <div className="scoreboard">
                 {teamScores.map((score, index) => (
                     <div className="team-card" key={index}>
@@ -60,7 +60,7 @@ export default function Summary({ userAnswers, teamScores }) {
 
                     return (
                         <li key={index}>
-                            <h3>{index + 1}</h3>
+                            <h4>Question {index + 1}</h4>
                             <p className='question'>{QUESTIONS[index].text}</p>
                             <p className={cssClass}>{answer ?? 'Skipped'}</p>
                         </li>
