@@ -1,9 +1,14 @@
 import quizCompleteImg from '../assets/quiz-complete.png';
 import QUESTIONS from '../questions';
-// import './Summary.css'; // Import the CSS file
 
 export default function Summary({ userAnswers, teamScores }) {
-    // Calculate statistics for each team
+    // Determine the winning team(s)
+    const maxScore = Math.max(...teamScores);
+    const winningTeams = teamScores
+        .map((score, index) => score === maxScore ? index + 1 : null)
+        .filter(teamNumber => teamNumber !== null);
+
+    // Generate team stats
     const teamStats = teamScores.map((_, index) => {
         const teamNumber = index + 1;
 
@@ -36,20 +41,28 @@ export default function Summary({ userAnswers, teamScores }) {
                     </div>
                 ))}
             </div>
-            <div id="team-stats-summary">
-                {teamStats.map((stats, index) => (
-                    <div className="team-stats-card" key={index}>
-                        <h4>Team {index + 1} Statistics</h4>
-                        <p>Skipped: {stats.skipped}</p>
-                        <p>Answered Correctly: {stats.correct}</p>
-                        <p>Answered Incorrectly: {stats.wrong}</p>
-                    </div>
-                ))}
+            <div className="team-stats-cover">
+                <div className="winners-container">
+                    {winningTeams.length === 1 ? (
+                        <div className="winner-card single-winner">
+                            <h3>Congratulations to the Winner!</h3>
+                            <div className="team-name">Team {winningTeams[0]}</div>
+                            <div className="team-score">Score: <span>{teamScores[winningTeams[0] - 1]}</span></div>
+                        </div>
+                    ) : (
+                        winningTeams.map(teamNumber => (
+                            <div className="winner-card single-winner" key={teamNumber}>
+                                <h3>Congratulations to the Winners!</h3>
+                                <div className="team-name">Team {teamNumber}</div>
+                                <div className="team-score">Score: <span>{teamScores[teamNumber - 1]}</span></div>
+                            </div>
+                        ))
+                    )}
+                </div>
             </div>
             <ol>
                 {userAnswers.map((answer, index) => {
                     let cssClass = 'user-answer';
-
                     if (answer === null) {
                         cssClass += ' skipped';
                     } else if (answer === QUESTIONS[index].answers[0]) {

@@ -32,6 +32,7 @@ export default function Answers({ answers, selectedAnswer, answerState, onSelect
                         <button
                             onClick={() => onSelect(answer)}
                             className={cssClass}
+                            id="answer"
                             disabled={answerState !== ''}
                         >
                             {answer}

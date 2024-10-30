@@ -8,7 +8,7 @@ export default [
         'Barometer',
         'Microscope',
     ],
-    team: 1,  // Team 1
+    team: 1,  
 },
 {
     id: 'q2',
@@ -19,18 +19,19 @@ export default [
         'General Organization for Online Global Learning and Education',
         'Global Online Organized Guide for Learning and Education',
     ],
-    team: 2,  // Team 2
+    team: 2,  
 },
-    // {
-    //   id: 'q3',
-    //   text: 'Who is the founder of Apple?',
-    //   answers: [
-    //     'Steve Jobs',
-    //     'Jeff Bezos',
-    //     'Larry Page',
-    //     'Michael Dell',
-    //   ],
-    // },
+    {
+      id: 'q3',
+      text: 'Who is the founder of Apple?',
+      answers: [
+        'Steve Jobs',
+        'Jeff Bezos',
+        'Larry Page',
+        'Michael Dell',
+      ],
+      team: 3, 
+    },
     // {
     //   id: 'q4',
     //   text: 'What is a web browser?',
@@ -40,6 +41,7 @@ export default [
     //     'A computer that stores www files.',
     //     'An online data storing site.',
     //   ],
+    //   team: 1, 
     // },
     // {
     //   id: 'q5',
@@ -50,6 +52,7 @@ export default [
     //     'To add a table row.',
     //     'To add a horizontal scrollbar.',
     //   ],
+    //   team: 2, 
     // },
     // {
     //   id: 'q6',
@@ -60,6 +63,7 @@ export default [
     //     '2%',
     //     '10%',
     //   ],
+    //   team: 3, 
     // },
     // {
     //   id: 'q7',
@@ -70,6 +74,7 @@ export default [
     //     '20%',
     //     '25%',
     //   ],
+    //   team: 1, 
     // },
     // {
     //   id: 'q8',
@@ -80,6 +85,7 @@ export default [
     //     '72 Keywords',
     //     '36 keywords',
     //   ],
+    //   team: 2, 
     // },
     // {
     //   id: 'q9',
@@ -90,6 +96,7 @@ export default [
     //     'JAVA',
     //     'PYTHON',
     //   ],
+    //   team: 3, 
     // },
     // {
     //   id: 'q10',
@@ -100,6 +107,7 @@ export default [
     //     'Design Reusable Yield',
     //     'Dynamic Runtime Yield',
     //   ],
+    //   team: 1, 
     // },
     // {
     //   id: 'q11',
@@ -110,6 +118,7 @@ export default [
     //     'To optimize code performance',
     //     'To find and fix bugs in the code',
     //   ],
+    //   team: 2, 
     // },
     // {
     //   id: 'q12',
@@ -120,6 +129,7 @@ export default [
     //     'int &ptr;',
     //     'int ptr&;',
     //   ],
+    //   team: 3, 
     // },
     // {
     //   id: 'q13',
@@ -130,6 +140,7 @@ export default [
     //     'They can return a value.',
     //     'They are called manually by the programmer.',
     //   ],
+    //   team: 1, 
     // },
     // {
     //   id: 'q14',
@@ -140,15 +151,17 @@ export default [
     //     '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">',
     //     '<!DOCTYPE HTML>',
     //   ],
+    //   team: 2, 
     // },
     // {
     //   id: 'q15',
-    //   text: 'What is the purpose of the <form> tag in HTML?',
+    //   text: 'Which HTML tag is used to create an ordered list in web pages?',
     //   answers: [
-    //     '',
-    //     '',
-    //     '',
-    //     '',
+    //     '<ul>',
+    //     '<ol>',
+    //     '<li>',
+    //     '<ol> and <ul>',
     //   ],
+    //   team: 3, 
     // },
   ]

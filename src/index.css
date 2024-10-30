@@ -128,7 +128,7 @@ header h1 {
 
 #question h2 {
   font-family: 'Roboto', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   font-weight: normal;
   margin: 0.5rem 0 2.5rem 0;
   color: #c1b2dd;
@@ -254,7 +254,7 @@ header h1 {
   align-items: center;
   background: #2c203d;
   color: #d8cde8;
-  width: 2rem;
+  /* width: 2rem; */
   height: 2rem;
   border-radius: 50%;
 }
@@ -400,7 +400,8 @@ header h1 {
 #quiz h2 {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1.5rem;
-  color: #c1b2dd;
+  font-weight: bolder ;
+  color: #ff0000;
   text-align: center;
   margin-bottom: 1rem;
 }
@@ -408,15 +409,24 @@ header h1 {
 /* Styles for team scores */
 #team-scores {
   display: flex;
+  border:1px solid black;
   justify-content: center;
   gap: 2rem;
   margin-bottom: 1rem;
 }
 
+#answer {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
 #team-scores p {
+  width:25%;
+  border:1px solid black;
   font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  color: #ebe7ef;
+  font-size: 2rem;
+  color: #000000;
+  background:white;
 }
 
 /* Styles for team scores summary */
@@ -593,6 +603,8 @@ body {
 }
 
 .team-stats-card {
+  font-size: 25px;
+  font-weight: bolder;
   text-align: center;
   padding: 20px;
   border: 2px solid #ddd;
@@ -859,27 +871,99 @@ li {
 
 .timer-container {
   position: relative;
-  width: 100%; /* Adjust width as needed */
-  margin-bottom: 10px; /* Space between timer and progress bar */
+  width: 100%; 
+  margin-bottom: 10px; 
 }
 
 .timer {
-  font-size: 1.5rem; /* Adjust size as needed */
+  font-size: 1.5rem;
   position: absolute;
-  top: -30px; /* Position the timer above the progress bar */
+  top: -30px; 
   left: 50%;
   transform: translateX(-50%);
 }
 
 .progress-bar {
   position: relative;
-  height: 20px; /* Adjust height as needed */
-  background-color: #f3f3f3; /* Background color of progress bar */
+  height: 20px; 
+  background-color: #f3f3f3; 
 }
 
 .progress-bar-fill {
   height: 100%;
-  background-color: #4caf50; /* Fill color */
-  width: 0%; /* This will be updated dynamically */
+  background-color: #4caf50;
+  width: 0%; 
 }
 
+.team-stats-cover {
+  background-color: white;
+}
+
+/* General Styles */
+#summary {
+  text-align: center;
+  padding: 20px;
+}
+
+.summary-image {
+  width: 100px;
+  height: auto;
+}
+
+.summary-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.scoreboard, .winners-container {
+  margin: 20px 0;
+}
+
+.team-card, .winner-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.team-card {
+  display: inline-block;
+  width: 200px;
+}
+
+.winner-card {
+  display: inline-block;
+  width: 250px;
+  background-color: #fff3e0;
+  border: 2px solid #ffeb3b;
+}
+
+.single-winner {
+  font-size: 1.2em;
+  color: #ff9800;
+}
+
+.team-name {
+  font-weight: bold;
+}
+
+.team-score span {
+  font-size: 1.5em;
+}
+
+.user-answer {
+  margin: 10px 0;
+}
+
+.user-answer.skipped {
+  color: #888;
+}
+
+.user-answer.correct {
+  color: #4caf50;
+}
+
+.user-answer.wrong {
+  color: #f44336;
+}

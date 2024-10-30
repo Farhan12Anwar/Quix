@@ -1,16 +1,21 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from 'react';
+import StartScreen from './StartScreen';
+import Question from './Question';
+import Summary from './Summary';
 import QUESTIONS from '../questions';
-import quizCompleteImg from '../assets/quiz-complete.png';
-import Question from "./Question";
-import Summary from "./Summary";
 
 export default function Quiz() {
     const [userAnswers, setUserAnswers] = useState([]);
-    const [teamScores, setTeamScores] = useState([0, 0, 0]); // Scores for 3 teams
-    const [currentTeam, setCurrentTeam] = useState(0); // Index of the current team
+    const [teamScores, setTeamScores] = useState([0, 0, 0]);
+    const [currentTeam, setCurrentTeam] = useState(0);
+    const [quizStarted, setQuizStarted] = useState(false);
 
     const activeQuestionIndex = userAnswers.length;
     const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
+
+    const handleStartQuiz = () => {
+        setQuizStarted(true);
+    };
 
     const handleSelectAnswer = useCallback((selectedAnswer) => {
         setUserAnswers((prevUserAnswers) => [...prevUserAnswers, selectedAnswer]);
@@ -18,16 +23,19 @@ export default function Quiz() {
         setTeamScores((prevScores) => {
             const newScores = [...prevScores];
             if (selectedAnswer === QUESTIONS[activeQuestionIndex].answers[0]) {
-                newScores[currentTeam] += 1; // Increment score if the answer is correct
+                newScores[currentTeam] += 1;
             }
             return newScores;
         });
 
-        // Switch to the next team
         setCurrentTeam((prevTeam) => (prevTeam + 1) % 3);
     }, [currentTeam, activeQuestionIndex]);
 
     const handleSkipAnswer = useCallback(() => handleSelectAnswer(null), [handleSelectAnswer]);
+
+    if (!quizStarted) {
+        return <StartScreen onStartQuiz={handleStartQuiz} />;
+    }
 
     if (quizIsComplete) {
         return <Summary userAnswers={userAnswers} teamScores={teamScores} />;
@@ -38,7 +46,7 @@ export default function Quiz() {
             <h2>Team {currentTeam + 1}'s Turn</h2>
             <div id="team-scores">
                 {teamScores.map((score, index) => (
-                    <p key={index}>Team {index + 1}: {score} points</p>
+                    <p key={index}>Team {index + 1}: {score} </p>
                 ))}
             </div>
             <Question
